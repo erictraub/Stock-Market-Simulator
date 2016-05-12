@@ -22,6 +22,10 @@ var schema = new mongoose.Schema({
     isAdmin: {
         type: Boolean,
         default: false
+    },
+    marketsTradeIn: {
+        type: [mongoose.Schema.ObjectId],
+        ref: 'Market'
     }
 });
 

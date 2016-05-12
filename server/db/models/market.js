@@ -15,6 +15,10 @@ var schema = new mongoose.Schema({
     Stocks: {
     	type: [mongoose.Schema.ObjectId],
     	ref: 'Stock'
+    },
+    participants: {
+        type: [mongoose.Schema.ObjectId],
+        ref: 'User'
     }
 
 });

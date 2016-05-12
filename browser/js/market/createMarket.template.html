@@ -1,1 +1,46 @@
-<h1>CREATE MARKET</h1>
+<div class="row">
+	<div class="col-md-1"></div>
+	<div class="col-md-3">
+		<form name="createMarketForm" ng-submit="createMarket()">
+			<h2>Create A New Market</h2>
+		    <div class="form-group">
+		        <label for="createMarket-name">Market Name</label>
+		        <input type="text" ng-model="market.name" class="form-control" id="createMarket-name">
+		    </div>
+		    <button type="submit" class="btn btn-default">Create Market</button>
+		</form>
+	</div>
+
+	<div class="col-md-4">
+		<table class='table table-hover table-striped' ng-show="myMarkets.length">
+		  <thead>
+		    <tr>
+		      <th>My Markets</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr ng-repeat="market in myMarkets" ui-sref="editMarket({marketId: market._id})">
+		      <td>{{ market.name }}</td>
+		    </tr>
+		  </tbody>
+		</table>
+	</div>
+
+	<div class="col-md-4">
+		<table class='table table-hover table-striped' ng-show="marketsTradeIn.length">
+		  <thead>
+		    <tr>
+		      <th>Markets I Trade In</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr ng-repeat="market in tradeMarkets">
+		      <td>{{ market.name }}</td>
+		    </tr>
+		  </tbody>
+		</table>
+	</div>
+
+
+
+</div>

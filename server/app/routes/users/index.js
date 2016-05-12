@@ -16,6 +16,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/:userId', function(req, res, next) {
 	User.findOneById(req.params.userId)
+	.populate('marketsTradeIn')
 	.then(function(user) {
 		res.send(user);
 	})

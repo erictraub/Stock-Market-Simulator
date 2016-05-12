@@ -56,13 +56,4 @@ app.run(function ($rootScope, AuthService, $state) {
 
 
 
-
-
-// CONTINUE WITH CREATE MARKET STATE
-
-
-
-
-
-
-
+// CONTINUE WITH EDIT MARKET STATE SO YOU CAN ADD STOCKS TO A MARKET

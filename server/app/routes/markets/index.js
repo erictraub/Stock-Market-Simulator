@@ -6,8 +6,10 @@ var mongoose = require('mongoose');
 var Market = mongoose.model('Market');
 
 
+
 router.get('/', function(req, res, next) {
-	Market.find()
+	console.log('HIT ROUTE 1')
+	Market.find(req.query)
 	.then(function(markets) {
 		res.send(markets);
 	})
@@ -15,12 +17,15 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/:marketId', function(req, res, next) {
-	Market.findOneById(req.params.marketId)
+	console.log('HIT ROUTE 2')
+	Market.findById(req.params.marketId)
+	.populate('stocks')
 	.then(function(market) {
 		res.send(market);
 	})
 	.catch(next);
 });
+
 
 router.post('/', function(req, res, next) {
 	Market.create(req.body)
