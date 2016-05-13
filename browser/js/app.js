@@ -56,4 +56,4 @@ app.run(function ($rootScope, AuthService, $state) {
 
 
 
-// CONTINUE WITH EDIT MARKET STATE SO YOU CAN ADD STOCKS TO A MARKET
+// CONTINUE WITH EDIT MARKET STATE - stocks arent being loaded into market correctly when it initailly loads

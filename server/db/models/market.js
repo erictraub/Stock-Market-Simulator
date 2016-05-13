@@ -12,7 +12,7 @@ var schema = new mongoose.Schema({
     	type: mongoose.Schema.ObjectId,
     	ref: 'User'
     },
-    Stocks: {
+    stocks: {
     	type: [mongoose.Schema.ObjectId],
     	ref: 'Stock'
     },

@@ -1,1 +1,32 @@
-<h1>edit market state</h1>
+<div class="col-md-1"></div>
+<div class="col-md-3">
+	<form name="createMarketForm" ng-submit="addStockToMarket()">
+		<h3>Add A Stock To The Market</h3>
+	    <div class="form-group">
+	        <label>Set Name</label>
+	        <input type="text" ng-model="stockToAdd.name" class="form-control">
+	    </div>
+	    <div class="form-group">
+	        <label>Set Price</label>
+	        <input type="text" ng-model="stockToAdd.price" class="form-control">
+	    </div>
+	    <button type="submit" class="btn btn-default">Add Stock</button>
+	</form>
+</div>
+
+<div class="col-md-4">
+	<table class='table table-hover table-striped' ng-show="true">
+	  <thead>
+	    <tr>
+	      <th>Stock</th>
+	      <th>Price</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <tr ng-repeat="stock in stocks" ui-sref="#">
+	      <td>{{ stock.name }}</td>
+	      <td>{{ stock.price }}</td>
+	    </tr>
+	  </tbody>
+	</table>
+</div>

@@ -23,6 +23,14 @@ app.factory('MarketFactory', function($http) {
 		});
 	};
 
+	MarketFactory.addStockToMarket = function(marketId, stockId) {
+		console.log('stockid:', stockId)
+		return $http.put('/api/markets/' + marketId + '/stocks', {stockId: stockId})
+		.then(function(market) {
+			return market.data;
+		});
+	};
+
 
 	return MarketFactory;
 });

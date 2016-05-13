@@ -43,6 +43,14 @@ router.put('/:marketId', function(req, res, next) {
 	.catch(next);
 });
 
+router.put('/:marketId/stocks', function(req, res, next) {
+	Market.findByIdAndUpdate(req.params.marketId, {$push: {'stocks': req.body.stockId}}, {upsert: true, new: true})
+	.then(function(market) {
+		res.send(market);
+	})
+	.catch(next);
+});
+
 router.delete('/:marketId', function(req, res, next) {
 	Market.remove({_id: req.parama.marketId})
 	.then(function() {
