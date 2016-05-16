@@ -51,6 +51,17 @@ router.put('/:marketId/stocks', function(req, res, next) {
 	.catch(next);
 });
 
+router.put('/:marketId/participants', function(req, res, next) {
+	// currently does not add participants to market
+	// maybe have to do promise.all here and push each on in individually if cant find another way
+	Market.findByIdAndUpdate(req.params.marketId, {$push: {'participants': req.body.participants}}, {upsert: true, new: true})
+	.then(function(market) {
+		console.log('market', market)
+		res.send(market);
+	})
+	.catch(next);
+});
+
 router.delete('/:marketId', function(req, res, next) {
 	Market.remove({_id: req.parama.marketId})
 	.then(function() {

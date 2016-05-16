@@ -12,6 +12,23 @@
 	    </div>
 	    <button type="submit" class="btn btn-default">Add Stock</button>
 	</form>
+
+	<h3>Add A Participant To The Market</h3>
+	<p ng-repeat="participant in participantsToAdd">{{ participant.username }}</p>
+	<form name="addParticipant" ng-submit="addParticipantToMarket()">
+	    <button type="submit" class="btn btn-default" ng-click="addPartsToMarket()">Add Participants</button>
+	    <div class="form-group">
+	        <!-- <label>Search by Username</label> -->
+	        <input type="text" ng-model="participantSearched" class="form-control" placeholder="Search by Username">
+	    </div>
+	</form>
+
+	<div class="col-md-12" style="height:300px;border:1px solid black;border-radius:5px;overflow:scroll;">
+		<div ng-repeat="user in users | filter: { username: participantSearched, inAddArray: false }" style="border-top:1px solid gray;border-top:1px solid gray;text-align:center" ng-click="addPart(user)">
+			<h3>{{ user.username }}</h3>
+		</div>
+	</div>
+
 </div>
 
 <div class="col-md-4">
@@ -26,6 +43,22 @@
 	    <tr ng-repeat="stock in stocks" ui-sref="#">
 	      <td>{{ stock.name }}</td>
 	      <td>{{ stock.price }}</td>
+	    </tr>
+	  </tbody>
+	</table>
+</div>
+<div class="col-md-4">
+	<table class='table table-hover table-striped' ng-show="true">
+	  <thead>
+	    <tr>
+	      <th>Participant Name</th>
+	      <th>Cash</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <tr ng-repeat="participant in participants" ui-sref="#">
+	      <td>{{ participant.name }}</td>
+	      <td>{{ participant.totalCash }}</td>
 	    </tr>
 	  </tbody>
 	</table>

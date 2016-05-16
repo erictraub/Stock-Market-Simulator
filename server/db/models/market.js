@@ -12,14 +12,14 @@ var schema = new mongoose.Schema({
     	type: mongoose.Schema.ObjectId,
     	ref: 'User'
     },
-    stocks: {
-    	type: [mongoose.Schema.ObjectId],
+    stocks: [{
+    	type: mongoose.Schema.ObjectId,
     	ref: 'Stock'
-    },
-    participants: {
-        type: [mongoose.Schema.ObjectId],
+    }],
+    participants: [{
+        type: mongoose.Schema.ObjectId,
         ref: 'User'
-    }
+    }]
 
 });
 

@@ -22,6 +22,9 @@ app.config(function ($stateProvider) {
         resolve: {
             market: function($stateParams, MarketFactory) {
                 return MarketFactory.getMarketById($stateParams.marketId);
+            },
+            allUsers: function(UserFactory) {
+                return UserFactory.getAllUsers();
             }
         }
     });

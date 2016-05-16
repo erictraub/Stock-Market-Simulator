@@ -14,18 +14,14 @@ app.controller('CreateMarketCtrl', function($scope, MarketFactory, $log, $state,
 });
 
 
-app.controller('EditMarketCtrl', function($scope, market, MarketFactory, $log, StockFactory) {
-	// AFTER ADD STOCK IT MARKETS COMES BACK WTIH CORRECT STOCKS
-	// BUT INITAILL LOADS WITH NO STOCKS
-	// WHERE IS CORRECT STOCK COMING FROM? DOES NOT HAVE STOCKS ON IT
-	// IN DATABASE
-	// ACTUALLY IT IS RIGHT IN DB, NOT RIGHT FROM POSTMAN THO
+app.controller('EditMarketCtrl', function($scope, market, MarketFactory, $log, StockFactory, allUsers) {
+
+	$scope.users = allUsers;
+	console.log('users: ', $scope.users)
 	$scope.market = market;
 	console.log('market', market)
 	$scope.stockToAdd = { market: $scope.market._id };
 	$scope.stocks = $scope.market.stocks;
-
-
 
 	$scope.addStockToMarket = function() {
 		StockFactory.createNewStock($scope.stockToAdd)
@@ -36,6 +32,22 @@ app.controller('EditMarketCtrl', function($scope, market, MarketFactory, $log, S
 			console.log('updated market: ', market);
 		})
 		.catch($log.error);
+	};
+
+	$scope.participantsToAdd = [];
+
+
+	$scope.addPart = function(user) {
+		user.inAddArray = true;
+		$scope.participantsToAdd.push(user);
+	};
+
+	$scope.addPartsToMarket = function() {
+		var partsToAdd = $scope.participantsToAdd.map(function(participant) {
+			return participant._id;
+		});
+		console.log('adddd',partsToAdd)
+		MarketFactory.addPartsToMarket($scope.market._id, partsToAdd);
 	};
 
 });
