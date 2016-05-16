@@ -31,6 +31,13 @@ app.factory('MarketFactory', function($http) {
 		});
 	};
 
+	MarketFactory.addPartsToMarket = function(marketId ,participants) {
+		return $http.put('/api/markets/' + marketId +'/participants', {participants: participants})
+		.then(function(market) {
+			return market.data;
+		});
+	};
+
 
 	return MarketFactory;
 });
